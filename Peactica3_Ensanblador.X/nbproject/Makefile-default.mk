@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=
+SOURCEFILES_QUOTED_IF_SPACED=Practice3.asm
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=
-POSSIBLE_DEPFILES=
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/Practice3.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/Practice3.o.d
 
 # Object Files
-OBJECTFILES=
+OBJECTFILES=${OBJECTDIR}/Practice3.o
 
 # Source Files
-SOURCEFILES=
+SOURCEFILES=Practice3.asm
 
 
 
@@ -89,7 +89,23 @@ FINAL_IMAGE_NAME_MINUS_EXTENSION=${DISTDIR}/Peactica3_Ensanblador.X.${IMAGE_TYPE
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: pic-as-assembler
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
+${OBJECTDIR}/Practice3.o: Practice3.asm  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/Practice3.o 
+	${MP_AS} -mcpu=PIC18F4550 -c \
+	-o ${OBJECTDIR}/Practice3.o \
+	Practice3.asm \
+	 -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -misa=std -msummary=+mem,-psect,-class,-hex,-file,-sha1,-sha256,-xml,-xmlfull -fmax-errors=20 -mwarn=0 -xassembler-with-cpp
+	
 else
+${OBJECTDIR}/Practice3.o: Practice3.asm  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/Practice3.o 
+	${MP_AS} -mcpu=PIC18F4550 -c \
+	-o ${OBJECTDIR}/Practice3.o \
+	Practice3.asm \
+	  -mdfp="${DFP_DIR}/xc8"  -misa=std -msummary=+mem,-psect,-class,-hex,-file,-sha1,-sha256,-xml,-xmlfull -fmax-errors=20 -mwarn=0 -xassembler-with-cpp
+	
 endif
 
 # ------------------------------------------------------------------------------------
